@@ -106,3 +106,21 @@
     r = requests.get(url, headers=headers)
 
     ```
+
+### scrapy 入门：
+
+问题：
+
+    ```
+    from quotetutrial.quotetutrial.items import QuoteItem
+    ImportError: No module named 'quotetutrial.quotetutrial'
+    ```
+
+解决：
+
+    需要从项目中引入，不是目录
+
+    ```
+     from quotetutrial.items import QuoteItem
+    ```
+
