@@ -45,3 +45,20 @@
     options.add_argument('headless')
     browser = webdriver.Chrome(chrome_options=options)
     ```
+
+
+### 代理池
+
+简述：
+    ip代理池，防止网站反爬设置代理池
+
+文件：
+    api.py:         flask api 对外接口，获取proxy ip
+    conf.py:        代理设置文件
+    db.py:          redis数据库操作
+    getter.py:      获取代理IP
+    spider.py:      代理handler设置
+    schedule.py:    调度器，调度getter和validator
+    utils.py:       工具函数
+    validator.py:   验证代理是否可用
+
