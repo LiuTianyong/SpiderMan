@@ -14,7 +14,7 @@
     利用requests的session特性进行爬取，同时添加headers防止网站反爬，并把数据存储进mongoDB
 
 问题1：
-    爬取返回数据"<html><body></body></html>", 并不是正确的数据
+    爬取返回数据`<html><body></body></html>`, 并不是正确的数据
 
 解决:
     利用requests.session(), 添加头信息headers的user-Agent, 替换之前的直接的requests请求
@@ -50,6 +50,7 @@
 ### 代理池
 
 简述：
+
     ip代理池，防止网站反爬设置代理池
 
 文件：
