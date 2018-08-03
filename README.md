@@ -79,3 +79,30 @@
 
     validator.py:   验证代理是否可用
 
+
+### 爬取微信文章
+错误：
+
+    Error Occurred
+    (MaxRetryError("HTTPConnectionPool(host='180.118.86.57', port=9000):
+    Max retries exceeded with url: http://weixin.sogou.com/weixin?query=%E9%A3%8E%E6%99%AF&page=1&type=2
+    (Caused by ProxyError('Cannot connect to proxy.', NewConnectionError('<urllib3.connection.HTTPConnection
+    object at 0x7f0040885470>: Failed to establish a new connection: [Errno 111] Connection refused',)))",),)
+
+原因：
+
+    因为在每次数据传输前客户端要和服务器建立TCP连接，为节省传输消耗，
+    默认为keep-alive，即连接一次，传输多次，然而在多次访问后不能结束并回到连接池中，导致不能产生新的连接
+
+解决：
+
+    headers中的Connection默认为keep-alive，
+    将header中的Connection一项置为close
+
+    ```
+    headers = {
+        'Connection': 'close',
+    }
+    r = requests.get(url, headers=headers)
+
+    ```
